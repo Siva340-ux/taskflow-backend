@@ -51,8 +51,9 @@
 		<dependency>
     <groupId>com.h2database</groupId>
     <artifactId>h2</artifactId>
-    <scope>test</scope>  ← CHANGE THIS!
+    <scope>runtime</scope>
 </dependency>
+
 
 		<dependency>
 			<groupId>org.projectlombok</groupId>
