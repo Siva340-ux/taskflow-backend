@@ -48,17 +48,7 @@ public class SecurityConfig {
         return source;
     }
 }
-    @Bean
-public CorsFilter corsFilter() {
-    UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-    CorsConfiguration config = new CorsConfiguration();
-    config.setAllowCredentials(true);
-    config.addAllowedOriginPattern("*");  // ✅ ALL origins
-    config.addAllowedHeader("*");
-    config.addAllowedMethod("*");
-    source.registerCorsConfiguration("/**", config);
-    return new CorsFilter(source);
-}
+    
 
     @Bean
     public PasswordEncoder passwordEncoder() {
