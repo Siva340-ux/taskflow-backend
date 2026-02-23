@@ -13,6 +13,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/auth")
 @RequiredArgsConstructor
+@CrossOrigin(origins = {"https://taskflow-frontend-ohey.vercel.app", "http://localhost:3000"})
 public class AuthController {
 
     private final UserRepository userRepository;
