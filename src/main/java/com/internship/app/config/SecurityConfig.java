@@ -1,4 +1,6 @@
 package com.internship.app.config;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.Customizer;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
