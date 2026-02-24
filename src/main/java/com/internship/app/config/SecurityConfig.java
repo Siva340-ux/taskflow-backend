@@ -1,4 +1,5 @@
 package com.internship.app.config;
+
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.Customizer;
 import org.springframework.web.filter.CorsFilter;
@@ -20,14 +21,15 @@ import java.util.List;
 
 @Configuration
 @EnableWebSecurity
-public class SecurityConfig {
+@RequiredArgsConstructor  // ✅ MOVED HERE
+public class SecurityConfig {  // ✅ PROPER CLASS STRUCTURE
     
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.cors(Customizer.withDefaults())  // ✅ ENABLE CORS
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(authz -> authz
-                .requestMatchers("/auth/**").permitAll()
+                .requestMatchers("/auth/**", "/actuator/**").permitAll()  // ✅ Added actuator
                 .anyRequest().authenticated()
             )
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
@@ -47,8 +49,6 @@ public class SecurityConfig {
         source.registerCorsConfiguration("/**", config);
         return source;
     }
-}
-    
 
     @Bean
     public PasswordEncoder passwordEncoder() {
